@@ -1,4 +1,4 @@
-import { Prisma } from "../../../../generated/prisma";
+import { Admin, Prisma } from "../../../../generated/prisma";
 import { paginationHelper } from "../../../helper/pagination-helper";
 import prisma from "../../../shared/prisma";
 
@@ -53,6 +53,26 @@ const getAllAdmin = async (params: any, options: any) => {
   };
 };
 
+const getByIdFromDb = async (id: string) => {
+  const result = await prisma.admin.findUnique({
+    where: {
+      id,
+    },
+  });
+  return result;
+};
+const updateIntoDb = async (id: string, data: Partial<Admin>) => {
+  const result = await prisma.admin.update({
+    where: {
+      id,
+    },
+    data,
+  });
+  return result;
+};
+
 export const adminServices = {
   getAllAdmin,
+  getByIdFromDb,
+  updateIntoDb,
 };

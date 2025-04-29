@@ -21,7 +21,41 @@ const getAllAdmin = async (req: Request, res: Response) => {
     });
   }
 };
+const getByIdFromDb = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  try {
+    const result = await adminServices.getByIdFromDb(id);
+    res.status(200).json({
+      success: true,
+      message: "Admin is retrieved successfully",
+      data: result,
+    });
+  } catch (err: any) {
+    res.status(500).json({
+      status: false,
+      message: err?.message || "Something went wrong",
+    });
+  }
+};
+const updateIntoDb = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  try {
+    const result = await adminServices.updateIntoDb(id, req.body);
+    res.status(200).json({
+      success: true,
+      message: "Admin is updated successfully",
+      data: result,
+    });
+  } catch (err: any) {
+    res.status(500).json({
+      status: false,
+      message: err?.message || "Something went wrong",
+    });
+  }
+};
 
 export const adminControllers = {
   getAllAdmin,
+  getByIdFromDb,
+  updateIntoDb,
 };
