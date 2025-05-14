@@ -1,0 +1,28 @@
+import status from "http-status";
+import catchAsync from "../../../shared/catchAsync";
+import sendResponse from "../../../shared/sendResponse";
+import { AuthServices } from "./auth.service";
+
+const loginUser = catchAsync(async (req, res) => {
+  const result = await AuthServices.loginUser(req.body);
+  const { accessToken, refreshToken, needPasswordChange } = result;
+
+  res.cookie("refreshToken", refreshToken, {
+    secure: false,
+    httpOnly: true,
+  });
+
+  sendResponse(res, {
+    statusCode: status.OK,
+    success: true,
+    message: "Logged in successful",
+    data: {
+      accessToken,
+      needPasswordChange,
+    },
+  });
+});
+
+export const AuthControllers = {
+  loginUser,
+};

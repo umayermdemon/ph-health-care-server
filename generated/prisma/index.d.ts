@@ -29,18 +29,19 @@ export type Admin = $Result.DefaultSelection<Prisma.$AdminPayload>
  */
 export namespace $Enums {
   export const UserRole: {
-  SUPER_ADMIN: 'SUPER_ADMIN',
-  ADMIN: 'ADMIN',
-  DOCTOR: 'DOCTOR',
-  PATIENT: 'PATIENT'
+  super_admin: 'super_admin',
+  admin: 'admin',
+  doctor: 'doctor',
+  patient: 'patient'
 };
 
 export type UserRole = (typeof UserRole)[keyof typeof UserRole]
 
 
 export const UserStatus: {
-  ACTIVE: 'ACTIVE',
-  BLOCKED: 'BLOCKED'
+  active: 'active',
+  blocked: 'blocked',
+  deleted: 'deleted'
 };
 
 export type UserStatus = (typeof UserStatus)[keyof typeof UserStatus]

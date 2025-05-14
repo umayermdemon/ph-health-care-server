@@ -154,15 +154,16 @@ exports.Prisma.NullsOrder = {
   last: 'last'
 };
 exports.UserRole = exports.$Enums.UserRole = {
-  SUPER_ADMIN: 'SUPER_ADMIN',
-  ADMIN: 'ADMIN',
-  DOCTOR: 'DOCTOR',
-  PATIENT: 'PATIENT'
+  super_admin: 'super_admin',
+  admin: 'admin',
+  doctor: 'doctor',
+  patient: 'patient'
 };
 
 exports.UserStatus = exports.$Enums.UserStatus = {
-  ACTIVE: 'ACTIVE',
-  BLOCKED: 'BLOCKED'
+  active: 'active',
+  blocked: 'blocked',
+  deleted: 'deleted'
 };
 
 exports.Prisma.ModelName = {
