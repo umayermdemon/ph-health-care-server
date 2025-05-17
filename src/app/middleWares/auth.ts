@@ -4,6 +4,7 @@ import config from "../config";
 import { Secret } from "jsonwebtoken";
 import AppError from "../errors/AppError";
 import status from "http-status";
+import { TRequestUser } from "../../types";
 
 const auth = (...roles: string[]) => {
   return async (req: Request, res: Response, next: NextFunction) => {
@@ -22,6 +23,7 @@ const auth = (...roles: string[]) => {
       if (roles.length && !roles.includes(decodedData?.role)) {
         throw new AppError(status.FORBIDDEN, "Forbidden!");
       }
+      req.user = decodedData as TRequestUser;
       next();
     } catch (err) {
       next(err);
