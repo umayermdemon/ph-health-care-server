@@ -17,7 +17,7 @@ const getAllAdmin = catchAsync(async (req, res) => {
   });
 });
 const getByIdFromDb = catchAsync(async (req, res) => {
-  const { id } = req.params;
+  const id  = req.params.id;
   const result = await adminServices.getByIdFromDb(id);
 
   sendResponse(res, {
